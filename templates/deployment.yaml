@@ -16,20 +16,32 @@ spec:
         app: flask-k8s-app
     spec:
       containers:
-      - name: flask-k8s-app
-        image: {{ .Values.image.repository }}:{{ index .Values.environments .Values.environmentName "image" "tag" }}
-        ports:
-        - containerPort: 5000
-        env:
-        - name: MONGODB_HOST
-          value: {{ index .Values.environments .Values.environmentName "mongodb" "host" }}
-        - name: MONGODB_PORT
-          value: {{ index .Values.environments .Values.environmentName "mongodb" "port" | quote }}
-        - name: MONGODB_USERNAME
-          value: {{ index .Values.environments .Values.environmentName "mongodb" "username" }}
-        - name: MONGODB_PASSWORD
-          value: {{ index .Values.environments .Values.environmentName "mongodb" "password" }}
-        - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName # Dynamically fetch the node name
+        - name: flask-k8s-app
+          image: {{ .Values.image.repository }}:{{ index .Values.environments .Values.environmentName "image" "tag" }}
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGODB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials # Replace with your secret name
+                  key: host # Replace with the actual key in your secret
+            - name: MONGODB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials # Replace with your secret name
+                  key: port # Replace with the actual key in your secret
+            - name: MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials # Replace with your secret name
+                  key: username # Replace with the actual key in your secret
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-credentials # Replace with your secret name
+                  key: password # Replace with the actual key in your secret
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName # Dynamically fetch the node name
