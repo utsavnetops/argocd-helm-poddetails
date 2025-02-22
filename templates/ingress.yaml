@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-flask-k8s-ingress
+  namespace: {{ index .Values.environments .Values.environmentName "namespace" }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: {{ index .Values.environments .Values.environmentName "ingress" "host" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}-flask-k8s-service
+            port:
+              number: 80
+

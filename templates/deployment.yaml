@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-flask-k8s-app
+  namespace: {{ index .Values.environments .Values.environmentName "namespace" }}
+  labels:
+    app: flask-k8s-app
+spec:
+  replicas: {{ index .Values.environments .Values.environmentName "replicaCount" }}
+  selector:
+    matchLabels:
+      app: flask-k8s-app
+  template:
+    metadata:
+      labels:
+        app: flask-k8s-app
+    spec:
+      containers:
+      - name: flask-k8s-app
+        image: {{ .Values.image.repository }}:{{ index .Values.environments .Values.environmentName "image" "tag" }}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGODB_HOST
+          value: {{ index .Values.environments .Values.environmentName "mongodb" "host" }}
+        - name: MONGODB_PORT
+          value: {{ index .Values.environments .Values.environmentName "mongodb" "port" | quote }}
+        - name: MONGODB_USERNAME
+          value: {{ index .Values.environments .Values.environmentName "mongodb" "username" }}
+        - name: MONGODB_PASSWORD
+          value: {{ index .Values.environments .Values.environmentName "mongodb" "password" }}
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName # Dynamically fetch the node name
