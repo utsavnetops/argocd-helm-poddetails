@@ -8,11 +8,6 @@ environments:
     replicaCount: 1
     image:
       tag: v0.0.16-dev
-    mongodb:
-      host: "{{ .Values.secret.mongodb.host }}"
-      port: "{{ .Values.secret.mongodb.port }}"
-      username: "{{ .Values.secret.mongodb.username }}"
-      password: "{{ .Values.secret.mongodb.password }}"
     namespace: poddetails-dev
     ingress:
       host: dev.example.com
@@ -24,11 +19,6 @@ environments:
     replicaCount: 1
     image:
       tag: v0.0.2-staging
-    mongodb:
-      host: "{{ .Values.secret.mongodb.host }}"
-      port: "{{ .Values.secret.mongodb.port }}"
-      username: "{{ .Values.secret.mongodb.username }}"
-      password: "{{ .Values.secret.mongodb.password }}"
     namespace: poddetails-staging
     ingress:
       host: staging.example.com
@@ -40,21 +30,9 @@ environments:
     replicaCount: 2
     image:
       tag: v0.0.1-prod
-    mongodb:
-      host: "{{ .Values.secret.mongodb.host }}"
-      port: "{{ .Values.secret.mongodb.port }}"
-      username: "{{ .Values.secret.mongodb.username }}"
-      password: "{{ .Values.secret.mongodb.password }}"
     namespace: poddetails-prod
     ingress:
       host: prod.example.com
     service:
       port: 80
       nodePort: 30001
-
-secret:
-  mongodb:
-    host: ""
-    port: ""
-    username: ""
-    password: ""
