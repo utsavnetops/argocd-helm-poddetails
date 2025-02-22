@@ -9,10 +9,10 @@ environments:
     image:
       tag: v0.0.16-dev
     mongodb:
-      host: "{{ .Values.secret.mongodb.host }}"
-      port: "{{ .Values.secret.mongodb.port }}"
-      username: "{{ .Values.secret.mongodb.username }}"
-      password: "{{ .Values.secret.mongodb.password }}"
+      host: "{{ .Values.secrets.mongodb.host }}"
+      port: "{{ .Values.secrets.mongodb.port }}"
+      username: "{{ .Values.secrets.mongodb.username }}"
+      password: "{{ .Values.secrets.mongodb.password }}"
     namespace: poddetails-dev
     ingress:
       host: dev.example.com
