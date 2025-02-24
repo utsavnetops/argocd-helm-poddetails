@@ -29,7 +29,7 @@ environments:
   prod:
     replicaCount: 2
     image:
-      tag: v0.0.1-prod
+      tag: flask-k8s-ops:v0.0.2-4edc36b0baeebc62a7de9a7f125808a42f663d24
     namespace: poddetails-prod
     ingress:
       host: prod.example.com
