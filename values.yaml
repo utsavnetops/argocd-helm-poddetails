@@ -7,7 +7,7 @@ environments:
   dev:
     replicaCount: 1
     image:
-      tag: develop-v0.0.17-dev-7c98256d7ae1f01c83f71b52f01c7ea77007626d
+      tag: develop-v0.0.17-dev-73df8c46f6dfec82b6acf77d10bba301f4d407ce
     namespace: poddetails-dev
     ingress:
       host: dev.example.com
