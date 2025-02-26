@@ -18,7 +18,7 @@ environments:
   staging:
     replicaCount: 1
     image:
-      tag: release-v0.0.4-staging-01968b6a228f5fd7cadc8658e98c0fa26b6f1173
+      tag: release-v0.0.5-staging-0ef308c5c5ce1fa40c5ae755fa1e0ee6367a53bc
     namespace: poddetails-staging
     ingress:
       host: staging.example.com
