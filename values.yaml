@@ -29,7 +29,7 @@ environments:
   prod:
     replicaCount: 2
     image:
-      tag: v0.0.3-e13657e6e72d100d00397632a29ad039b14f5a01
+      tag: v0.0.4-197056c46373b2d4bda6b92aa397a0389fb1457b
     namespace: poddetails-prod
     ingress:
       host: prod.example.com
