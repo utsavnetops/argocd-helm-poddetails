@@ -10,7 +10,7 @@ environments:
       tag: develop-v0.0.20-dev-3fbe97cc903bee23994d93954ae5d247eb167531
     namespace: poddetails-dev
     ingress:
-      host: dev.example.com
+      host: dev.utsavops.com
     service:
       port: 80
       nodePort: 30003
@@ -18,10 +18,10 @@ environments:
   staging:
     replicaCount: 1
     image:
-      tag: release-v0.0.6-staging-05656286c56fbf16d227d3819bd2072ad197b469
+      tag: release-v0.0.7-staging-24b3ec614e8becae36b428049aadfc6418bbeace
     namespace: poddetails-staging
     ingress:
-      host: staging.example.com
+      host: staging.utsavops.com
     service:
       port: 80
       nodePort: 30002
@@ -32,7 +32,7 @@ environments:
       tag: v0.0.4-197056c46373b2d4bda6b92aa397a0389fb1457b
     namespace: poddetails-prod
     ingress:
-      host: prod.example.com
+      host: prod.utsavops.com
     service:
       port: 80
       nodePort: 30001
