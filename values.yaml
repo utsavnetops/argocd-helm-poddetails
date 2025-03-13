@@ -29,7 +29,7 @@ environments:
   prod:
     replicaCount: 2
     image:
-      tag: v0.0.4-197056c46373b2d4bda6b92aa397a0389fb1457b
+      tag: v0.0.5-24b3ec614e8becae36b428049aadfc6418bbeace
     namespace: poddetails-prod
     ingress:
       host: prod.utsavops.com
