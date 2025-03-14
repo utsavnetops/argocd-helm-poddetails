@@ -32,7 +32,7 @@ environments:
       tag: v0.0.5-24b3ec614e8becae36b428049aadfc6418bbeace
     namespace: poddetails-prod
     ingress:
-      host: prod.utsavops.com
+      host: utsavops.com
     service:
       port: 80
       nodePort: 30001
